@@ -1,13 +1,10 @@
 import React from "react";
 import { HeroCarousel } from "@/components/sections/HeroCarousel";
 import { QuickLinks } from "@/components/sections/QuickLinks";
-import { NewsSection } from "@/components/sections/NewsSection";
-import { EventsSection } from "@/components/sections/EventsSection";
 import { StatsSection } from "@/components/sections/StatsSection";
 import {
   MOCK_HERO_SLIDES,
-  MOCK_NEWS_POSTS,
-  MOCK_EVENTS,
+
   STATS,
 } from "@/lib/mock-data";
 
@@ -35,12 +32,6 @@ export default function HomePage() {
 
       {/* ═══ Quick Links (4-column grid) ═══════════════════════════════════ */}
       <QuickLinks />
-
-      {/* ═══ News Section ═══════════════════════════════════════════════════ */}
-      <NewsSection posts={MOCK_NEWS_POSTS} maxItems={3} />
-
-      {/* ═══ Events Section ═════════════════════════════════════════════════ */}
-      <EventsSection events={MOCK_EVENTS} maxItems={3} />
 
       {/* ═══ Stats Section ══════════════════════════════════════════════════ */}
       <StatsSection stats={STATS} />

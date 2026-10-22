@@ -1,9 +1,10 @@
+/* ─── Google Fonts ────────────────────────────────────────── */
+/* MUST be first — before any @tailwind directives            */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Lato:wght@300;400;700;900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* ─── Google Fonts ────────────────────────────────────────── */
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Lato:wght@300;400;700;900&display=swap");
 
 /* ─── CSS Custom Properties ───────────────────────────────── */
 :root {
@@ -12,20 +13,20 @@
   --font-mono: "ui-monospace", "SFMono-Regular", monospace;
 
   /* MEC Brand Palette */
-  --color-navy:        #1B2A5E;
-  --color-navy-light:  #2841AA;
-  --color-navy-dark:   #0F1933;
-  --color-sienna:      #A0522D;
-  --color-sienna-light:#C35502;
-  --color-cream:       #FAF8F4;
-  --color-cream-dark:  #F0EDE5;
+  --color-navy:         #1B2A5E;
+  --color-navy-light:   #2841AA;
+  --color-navy-dark:    #0F1933;
+  --color-sienna:       #A0522D;
+  --color-sienna-light: #C35502;
+  --color-cream:        #FAF8F4;
+  --color-cream-dark:   #F0EDE5;
 
   /* Semantic surface colours */
   --surface-bg:   var(--color-cream);
   --surface-card: #FFFFFF;
 
   /* Transitions */
-  --transition-base: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base:   200ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-bounce: 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
@@ -87,25 +88,25 @@ body {
   /* Underline grow on hover */
   .link-underline {
     position: relative;
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: currentColor;
-      transition: width var(--transition-base);
-    }
-    &:hover::after { width: 100%; }
   }
+  .link-underline::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: currentColor;
+    transition: width var(--transition-base);
+  }
+  .link-underline:hover::after { width: 100%; }
 
   /* Glass card effect */
   .glass {
-    background: rgba(255,255,255,0.12);
+    background: rgba(255, 255, 255, 0.12);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,255,255,0.18);
+    border: 1px solid rgba(255, 255, 255, 0.18);
   }
 
   /* Noise texture overlay for depth */
@@ -122,42 +123,42 @@ body {
   /* Animated gradient border */
   .gradient-border {
     position: relative;
-    &::before {
-      content: "";
-      position: absolute;
-      inset: -1px;
-      border-radius: inherit;
-      background: linear-gradient(135deg, var(--color-sienna), var(--color-navy), var(--color-sienna));
-      background-size: 200% 200%;
-      z-index: -1;
-      animation: gradientShift 4s ease infinite;
-    }
+  }
+  .gradient-border::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, var(--color-sienna), var(--color-navy), var(--color-sienna));
+    background-size: 200% 200%;
+    z-index: -1;
+    animation: gradientShift 4s ease infinite;
   }
 }
 
 /* ─── Component Layer ─────────────────────────────────────── */
 @layer components {
-  /* Btn base */
+  /* Button base */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg font-body font-bold 
-           text-sm transition-all duration-200 focus-visible:ring-2 focus-visible:ring-offset-2 
+    @apply inline-flex items-center justify-center gap-2 rounded-lg font-body font-bold
+           text-sm transition-all duration-200 focus-visible:ring-2 focus-visible:ring-offset-2
            cursor-pointer select-none whitespace-nowrap;
   }
   .btn-primary {
-    @apply btn bg-sienna text-white hover:bg-sienna-600 active:scale-[0.97] 
+    @apply btn bg-sienna text-white hover:bg-sienna-600 active:scale-[0.97]
            shadow-sienna hover:shadow-lg px-6 py-3;
   }
   .btn-secondary {
-    @apply btn border-2 border-navy text-navy hover:bg-navy hover:text-white 
+    @apply btn border-2 border-navy text-navy hover:bg-navy hover:text-white
            active:scale-[0.97] px-6 py-3;
   }
   .btn-ghost {
-    @apply btn text-navy-600 hover:bg-navy-50 px-4 py-2;
+    @apply btn text-navy-500 hover:bg-navy-50 px-4 py-2;
   }
 
   /* Card base */
   .card {
-    @apply bg-white rounded-2xl shadow-card overflow-hidden transition-shadow duration-300 
+    @apply bg-white rounded-2xl shadow-card overflow-hidden transition-shadow duration-300
            hover:shadow-card-md;
   }
 
@@ -173,18 +174,18 @@ body {
 
   /* Tag / Badge */
   .badge {
-    @apply inline-flex items-center gap-1 rounded-full px-3 py-0.5 text-xs font-body 
+    @apply inline-flex items-center gap-1 rounded-full px-3 py-0.5 text-xs font-body
            font-bold uppercase tracking-wide;
   }
-  .badge-navy   { @apply badge bg-navy-100 text-navy; }
-  .badge-sienna { @apply badge bg-sienna-50 text-sienna; }
+  .badge-navy   { @apply badge bg-navy-100 text-navy-800; }
+  .badge-sienna { @apply badge bg-sienna-50 text-sienna-600; }
   .badge-green  { @apply badge bg-emerald-50 text-emerald-700; }
 }
 
 /* ─── Global keyframes ────────────────────────────────────── */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0);     }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeIn {
@@ -204,21 +205,21 @@ body {
 
 @keyframes scaleIn {
   from { opacity: 0; transform: scale(0.95); }
-  to   { opacity: 1; transform: scale(1);    }
+  to   { opacity: 1; transform: scale(1); }
 }
 
 @keyframes slideDown {
   from { opacity: 0; transform: translateY(-12px); }
-  to   { opacity: 1; transform: translateY(0);     }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ─── Hero Carousel ───────────────────────────────────────── */
 .hero-slide {
   transition: opacity 700ms ease, transform 700ms ease;
 }
-.hero-slide.entering  { opacity: 0; transform: translateX(30px);  }
-.hero-slide.active    { opacity: 1; transform: translateX(0);       }
-.hero-slide.exiting   { opacity: 0; transform: translateX(-30px); }
+.hero-slide.entering { opacity: 0; transform: translateX(30px); }
+.hero-slide.active   { opacity: 1; transform: translateX(0); }
+.hero-slide.exiting  { opacity: 0; transform: translateX(-30px); }
 
 /* ─── Nav dropdown ────────────────────────────────────────── */
 .nav-dropdown {
